@@ -9,7 +9,7 @@ def toFile(file: str, data: str):
     :param file: 文件路径
     :param data: 字符串
     """
-    with open(file, "w") as file:
+    with open(file, "w", encoding='utf-8') as file:
         file.write(data)
 
 

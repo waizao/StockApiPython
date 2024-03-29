@@ -3,6 +3,11 @@ import os
 from stock import export_tool
 from stock.api import stock_api
 
+"""
+1、stock_api.py中函数名与歪枣网开发文档中接口请求URL名称保持一致，方便查找。采用驼峰命名法
+2、spider_api.py中定义了一些行情数据抓取方法
+"""
+
 if __name__ == '__main__':
     print("StockApiDemo")
     token: str = "e80da5d374d50461fd52080d43a0f591"  # 歪枣网（www.waizaowang.com）上登录后获取Token
@@ -56,7 +61,6 @@ if __name__ == '__main__':
         token,
         "",
         "post")  # post请求
-    result = export_tool.dataFrame(data)
     # 生成Csv文件
     file = os.path.join(os.path.abspath(os.path.dirname(__file__)), "waizaowang_export.csv")
     export_tool.toFile(file, data)
