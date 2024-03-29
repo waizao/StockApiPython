@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7448183f-155a-4907-9a55-7b89b896838e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/images/apiOne.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/images/apiThree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/images/apiTwo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/images/gongzhonghao.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/images/qqGroup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/images/waizaowang.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/waizaowang_export.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/waizaowang_export.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/api/stock_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/api/stock_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/export_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/export_tool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/stock_api_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/stock_api_demo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711717392022</updated>
       <workItem from="1711717397412" duration="825000" />
-      <workItem from="1711719931374" duration="4970000" />
+      <workItem from="1711719931374" duration="5616000" />
     </task>
     <servers />
   </component>
