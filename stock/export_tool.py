@@ -28,7 +28,7 @@ def dataFrame(data: str) -> pd.DataFrame:
     """
     json_data = json.loads(data)
     temp_df = pd.DataFrame(json_data["data"])
-    temp_df.columns = json_data["zh"]
+    temp_df.columns = json_data["zh"]  # 请求数据对应的字段名称
     return temp_df
 
 
