@@ -1,3 +1,24 @@
+Metadata-Version: 2.1
+Name: waizao
+Version: 1.1.1
+Summary: Simple financial data interface library for Python!
+Home-page: http://waizaowang.com/
+Author: waizaowang
+Author-email: waizaowang@163.com
+Keywords: stock,futures,fund,bond,index,finance,spider,quant,quantitative,investment,trading,data
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas>=0.25
+Requires-Dist: requests>=2.22.0
+
 # 歪枣网
 
 <p align=center>
