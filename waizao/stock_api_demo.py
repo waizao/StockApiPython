@@ -1,7 +1,7 @@
 import os
 
-from stock import export_tool
-from stock.api import stock_api
+from waizao import export_tool
+from waizao.api import stock_api
 
 """
 1、stock_api.py中函数名与歪枣网开发文档中接口请求URL名称保持一致，方便查找。采用驼峰命名法
