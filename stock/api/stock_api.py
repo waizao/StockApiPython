@@ -303,6 +303,125 @@ def getWatchStockTimeKLine(type: int, code: str, fields: str, export: int, token
         response = requests.get(url, params=params)
         return response.text
 
+def getStockYiDong(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    盘口异动数据，数据更新周期1分钟。沪深京股票交易时间：上午9：15--11：30，下午：13：00--15：00。港股交易时间：（1）正常交易时段：9:30至12:00；13:00至16:00。（2）早盘竞价时段：09:00至09:20；收市竞价交易：16:00至16:10。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getStockYiDong"
+    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getPoolZT(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    包含当日当前涨停的所有A股股票(不含未中断连续一字涨停板的新股)。注：涨停板行情专题统计不包含ST股票及科创板股票。数据更新周期1分钟。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getPoolZT"
+    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getPoolQS(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    包含创下60日新高或近期多次涨停的A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。数据更新周期1分钟。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getPoolQS"
+    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getPoolCX(code: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    包含上市一年以内且中断了连续一字涨停板的A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。数据更新周期1分钟。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getPoolCX"
+    params = {"code": code,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getPoolZB(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    包含当日触及过涨停板且当前未封板的A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。数据更新周期1分钟。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getPoolZB"
+    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getPoolDT(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    包含当日当前跌停的所有A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。数据更新周期1分钟。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getPoolDT"
+    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
 def getIndicatorTaAcos(type: int, code: str, ktype: int, fq: int, startDate: str, endDate: str, input: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
     反余弦函数。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
@@ -4466,6 +4585,84 @@ def getStockHSBDayKLine(code: str, ktype: int, fq: int, startDate: str, endDate:
         response = requests.get(url, params=params)
         return response.text
 
+def getMarketView(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    沪深两市每日行情统计。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getMarketView"
+    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getF10CompanyBaseInfo(code: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    沪深A股公司概况信息。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getF10CompanyBaseInfo"
+    params = {"code": code,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getStockZhuLi(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    主力数据。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getStockZhuLi"
+    params = {"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getStockAHComparePrice(fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    AH股比价。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getStockAHComparePrice"
+    params = {"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
 def getStockReName(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
     沪深A股股票曾用名。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
@@ -4489,7 +4686,7 @@ def getStockReName(code: str, startDate: str, endDate: str, fields: str, export:
 
 def getCompanyInfo(code: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    沪深A股公司信息。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    沪深A股公司题材信息。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
      :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
@@ -5296,10 +5493,11 @@ def getFinanceHSDebt(code: str, mtype: int, startDate: str, endDate: str, fields
         response = requests.get(url, params=params)
         return response.text
 
-def getPoolZT(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+def getSharePeoples(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    包含当日当前涨停的所有A股股票(不含未中断连续一字涨停板的新股)。注：涨停板行情专题统计不包含ST股票及科创板股票。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
-    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+    股东户数。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
      :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
      :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
      :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
@@ -5307,8 +5505,8 @@ def getPoolZT(startDate: str, endDate: str, fields: str, export: int, token: str
      :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
      :return: pandas.DataFrame
     """
-    url = "http://api.waizaowang.com/doc/getPoolZT"
-    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    url = "http://api.waizaowang.com/doc/getSharePeoples"
+    params = {"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
     if method == 'post':
         response = requests.post(url, params=params)
         return response.text
@@ -5316,10 +5514,11 @@ def getPoolZT(startDate: str, endDate: str, fields: str, export: int, token: str
         response = requests.get(url, params=params)
         return response.text
 
-def getPoolQS(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+def getShareTopHolder(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    包含创下60日新高或近期多次涨停的A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
-    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+    十大股东。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
      :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
      :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
      :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
@@ -5327,8 +5526,8 @@ def getPoolQS(startDate: str, endDate: str, fields: str, export: int, token: str
      :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
      :return: pandas.DataFrame
     """
-    url = "http://api.waizaowang.com/doc/getPoolQS"
-    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    url = "http://api.waizaowang.com/doc/getShareTopHolder"
+    params = {"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
     if method == 'post':
         response = requests.post(url, params=params)
         return response.text
@@ -5336,29 +5535,11 @@ def getPoolQS(startDate: str, endDate: str, fields: str, export: int, token: str
         response = requests.get(url, params=params)
         return response.text
 
-def getPoolCX(code: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+def getShareJieJin(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    包含上市一年以内且中断了连续一字涨停板的A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
-    :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
-     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
-     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
-     :param token     : 令牌，登录后可获取
-     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
-     :return: pandas.DataFrame
-    """
-    url = "http://api.waizaowang.com/doc/getPoolCX"
-    params = {"code": code,"fields": fields,"export": export,"token": token,"filter": filter}
-    if method == 'post':
-        response = requests.post(url, params=params)
-        return response.text
-    else:
-        response = requests.get(url, params=params)
-        return response.text
-
-def getPoolZB(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
-    """
-    包含当日触及过涨停板且当前未封板的A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
-    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+    股东解禁。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
      :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
      :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
      :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
@@ -5366,8 +5547,8 @@ def getPoolZB(startDate: str, endDate: str, fields: str, export: int, token: str
      :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
      :return: pandas.DataFrame
     """
-    url = "http://api.waizaowang.com/doc/getPoolZB"
-    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    url = "http://api.waizaowang.com/doc/getShareJieJin"
+    params = {"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
     if method == 'post':
         response = requests.post(url, params=params)
         return response.text
@@ -5375,10 +5556,11 @@ def getPoolZB(startDate: str, endDate: str, fields: str, export: int, token: str
         response = requests.get(url, params=params)
         return response.text
 
-def getPoolDT(startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+def getShareZengJianChi(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    包含当日当前跌停的所有A股股票。注：涨停板行情专题统计不包含ST股票及科创板股票。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
-    :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+    股东增减持。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
      :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
      :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
      :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
@@ -5386,8 +5568,29 @@ def getPoolDT(startDate: str, endDate: str, fields: str, export: int, token: str
      :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
      :return: pandas.DataFrame
     """
-    url = "http://api.waizaowang.com/doc/getPoolDT"
-    params = {"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    url = "http://api.waizaowang.com/doc/getShareZengJianChi"
+    params = {"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getShareGaoGuanZengJianChi(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    高管增减持。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getShareGaoGuanZengJianChi"
+    params = {"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
     if method == 'post':
         response = requests.post(url, params=params)
         return response.text
