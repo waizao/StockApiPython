@@ -13,7 +13,6 @@ if __name__ == '__main__':
     print("StockApiDemo")
     token: str = ""  # 歪枣网（www.waizaowang.com）上登录后获取Token
 
-
     #买卖五档，盘口数据
     data_list: [] = spider_api.get_pankou("sz000001,sh600000,bj833171")
     print(data_list)
