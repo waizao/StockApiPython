@@ -11,8 +11,8 @@ import requests
 
 def getBaseInfo(type: int, code: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    沪深京A股、沪深京B股、港股、美股、黄金、汇率、Reits、沪深指数、香港指数、全球指数、债券指数、场内基金、沪深债券、行业板块、概念板块、地域板块等范围列表。其中行业数据包括行业板块、概念板块、地域板块；场内基金包括ETF基金和LOF基金。可根据股票代码，调用通用接口中的每日行情、分线数据、时线数据、日线数据等接口。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
-    :param type      : 资产类型，取值范围：1|沪深京A股；2|沪深京B股；3|港股；4|美股；5|黄金；6|汇率；7|Reits；10|沪深指数；11|香港指数；12|全球指数；13|债券指数；20|场内基金；30|沪深债券；40|行业板块；41|概念板块；42|地域板块
+    沪深京A股、沪深京B股、港股、美股、黄金、汇率、Reits、加密货币、沪深指数、香港指数、全球指数、债券指数、场内基金、沪深债券、行业板块、概念板块、地域板块等范围列表。其中行业数据包括行业板块、概念板块、地域板块；场内基金包括ETF基金和LOF基金。可根据股票代码，调用通用接口中的每日行情、分线数据、时线数据、日线数据等接口。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param type      : 资产类型，取值范围：1|沪深京A股；2|沪深京B股；3|港股；4|美股；5|黄金；6|汇率；7|Reits；10|沪深指数；11|香港指数；12|全球指数；13|债券指数；14|重要指数；15|A-指数；20|场内基金；30|沪深债券；37|A-一级行业；38|A-二级行业；39|A-三级行业；40|B-行业板块；41|B-概念板块；42|B-地域板块；47|C-地域板块；48|C-行业板块；49|C-概念板块；60|加密货币
      :param code      : 股票代码，支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
      :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
      :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
@@ -137,7 +137,7 @@ def getDailyMarket(type: int, code: str, startDate: str, endDate: str, fields: s
 
 def getMinuteKLine(type: int, code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    分线数据，数据以分钟为粒度。数据均为不复权数据。数据范围包括沪深京A股、沪深京B股、港股、美股、场内基金、沪深债券，提供开盘竞价数据。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    分线数据，数据以分钟为粒度。数据均为不复权数据。数据范围包括沪深京A股、沪深京B股、港股、美股、场内基金、沪深债券。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param type      : 资产类型，取值范围：1|沪深京A股；2|沪深京B股；3|港股；4|美股；5|黄金；6|汇率；7|Reits；10|沪深指数；11|香港指数；12|全球指数；13|债券指数；20|场内基金；30|沪深债券；40|行业板块；41|概念板块；42|地域板块
      :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
@@ -182,8 +182,8 @@ def getHourKLine(type: int, code: str, ktype: int, startDate: str, endDate: str,
 
 def getDayKLine(type: int, code: str, ktype: int, fq: int, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    如果想收盘后立即获取当日的收盘数据，可通过【实时行情】或者【每日行情】接口获取收盘后的日K线数据。日线、周线、月线数据，数据范围包括沪深京A股、沪深京B股、港股、美股、黄金、汇率、Reits、沪深指数、香港指数、全球指数、债券指数、场内基金、沪深债券、行业板块、概念板块、地域板块。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
-    :param type      : 资产类型，取值范围：1|沪深京A股；2|沪深京B股；3|港股；4|美股；5|黄金；6|汇率；7|Reits；10|沪深指数；11|香港指数；12|全球指数；13|债券指数；20|场内基金；30|沪深债券；40|行业板块；41|概念板块；42|地域板块
+    如果想收盘后立即获取当日的收盘数据，可通过【实时行情】或者【每日行情】接口获取收盘后的日K线数据。日线、周线、月线数据，数据范围包括沪深京A股、沪深京B股、港股、美股、黄金、汇率、Reits、加密货币、沪深指数、香港指数、全球指数、债券指数、场内基金、沪深债券、行业板块、概念板块、地域板块。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param type      : 资产类型，取值范围：1|沪深京A股；2|沪深京B股；3|港股；4|美股；5|黄金；6|汇率；7|Reits；10|沪深指数；11|香港指数；12|全球指数；13|债券指数；14|重要指数；15|A-指数；20|场内基金；30|沪深债券；37|A-一级行业；38|A-二级行业；39|A-三级行业；40|B-行业板块；41|B-概念板块；42|B-地域板块；47|C-地域板块；48|C-行业板块；49|C-概念板块；60|加密货币
      :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；若为all，则表示全部，即可获取任意一天内的所有数据。
      :param ktype     : K线类别，取值范围：101|日线；102|周线；103|月线
      :param fq        : 复权信息，取值范围：0|不复权；1|前复权；2|后复权
@@ -218,6 +218,28 @@ def getLevel2TimeDeal(type: int, code: str, startDate: str, endDate: str, fields
      :return: pandas.DataFrame
     """
     url = "http://api.waizaowang.com/doc/getLevel2TimeDeal"
+    params = {"type": type,"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getStockChengFenGu(type: int, code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    指数或者行业板块成分股数据。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    :param type      : 资产类型，取值范围：14|重要指数；15|A-综合指数；37|A-一级行业；38|A-二级行业；39|A-三级行业；40|B-行业板块；41|B-概念板块；42|B-地域板块；44|C-地域板块；45|C-行业板块；46|C-概念板块
+     :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
+     :param startDate : 开始日期，yyyy-MM-dd格式，例如：2020-01-01
+     :param endDate   : 结束日期，yyyy-MM-dd格式，例如：2050-01-01
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getStockChengFenGu"
     params = {"type": type,"code": code,"startDate": startDate,"endDate": endDate,"fields": fields,"export": export,"token": token,"filter": filter}
     if method == 'post':
         response = requests.post(url, params=params)
@@ -276,6 +298,25 @@ def getZhiShuChengFenGu(mtype: int, fields: str, export: int, token: str, filter
     """
     url = "http://api.waizaowang.com/doc/getZhiShuChengFenGu"
     params = {"mtype": mtype,"fields": fields,"export": export,"token": token,"filter": filter}
+    if method == 'post':
+        response = requests.post(url, params=params)
+        return response.text
+    else:
+        response = requests.get(url, params=params)
+        return response.text
+
+def getStockPanKou(code: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
+    """
+    盘口买卖五档。纯爬虫接口，完全免费使用，歪枣网不校验权限也不存储任何数据，如做商业目的，请自行解决合规问题。温馨提示：建议选择左上角菜单栏【浏览模式】查询数据。
+    :param code      : 股票代码
+     :param fields    : 数据字段，多个字段之间使用逗号分隔，若获取所有字段，则取值为all。
+     :param export    : 数据导出类型，取值范围：0|Txt字符串；1|Json字符串；2|Txt文件；3|Json文件；4|Csv文件；5|DataFrame格式
+     :param token     : 令牌，登录后可获取
+     :param filter    : 过滤参数，例如filter=open>=15。建议选择左上角菜单栏【浏览模式】操作数据
+     :return: pandas.DataFrame
+    """
+    url = "http://api.waizaowang.com/doc/getStockPanKou"
+    params = {"code": code,"fields": fields,"export": export,"token": token,"filter": filter}
     if method == 'post':
         response = requests.post(url, params=params)
         return response.text
@@ -4415,7 +4456,7 @@ def getStockHSADailyMarket(code: str, startDate: str, endDate: str, fields: str,
 
 def getStockHSAMinuteKLine(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    沪深京A股分线数据，数据以分钟为粒度。数据均为不复权数据，提供开盘竞价数据。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    沪深京A股分线数据，数据以分钟为粒度。数据均为不复权数据。温馨提示：code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【沪深京->A股->A股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
      :param endDate   : 结束日期，yyyy-MM-dd HH:mm:ss格式，例如：2050-01-01 01:00:00
@@ -4521,7 +4562,7 @@ def getStockHSBDailyMarket(code: str, startDate: str, endDate: str, fields: str,
 
 def getStockHSBMinuteKLine(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    沪深京B股分线数据，数据以分钟为粒度，提供开盘竞价数据。温馨提示：code参数可以从【沪深京->B股->B股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    沪深京B股分线数据，数据以分钟为粒度。温馨提示：code参数可以从【沪深京->B股->B股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【沪深京->B股->B股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
      :param endDate   : 结束日期，yyyy-MM-dd HH:mm:ss格式，例如：2050-01-01 01:00:00
@@ -5640,7 +5681,7 @@ def getCnFundDailyMarket(code: str, startDate: str, endDate: str, fields: str, e
 
 def getCnFundMinuteKLine(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    场内基金（ETF、LOF）分线数据，数据以分钟为粒度，提供开盘竞价数据。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    场内基金（ETF、LOF）分线数据，数据以分钟为粒度。温馨提示：code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【通用接口->股票列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
      :param endDate   : 结束日期，yyyy-MM-dd HH:mm:ss格式，例如：2050-01-01 01:00:00
@@ -6068,7 +6109,7 @@ def getStockHKDailyMarket(code: str, startDate: str, endDate: str, fields: str, 
 
 def getStockHKMinuteKLine(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    港股分线数据，数据以分钟为粒度，提供开盘竞价数据，提供开盘竞价数据。温馨提示：code参数可以从【港股->港股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    港股分线数据，数据以分钟为粒度。温馨提示：code参数可以从【港股->港股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【港股->港股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
      :param endDate   : 结束日期，yyyy-MM-dd HH:mm:ss格式，例如：2050-01-01 01:00:00
@@ -6173,7 +6214,7 @@ def getStockUSADailyMarket(code: str, startDate: str, endDate: str, fields: str,
 
 def getStockUSAMinuteKLine(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    美股分线数据，数据以分钟为粒度，提供开盘竞价数据。温馨提示：code参数可以从【美股->美股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    美股分线数据，数据以分钟为粒度。温馨提示：code参数可以从【美股->美股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【美股->美股列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
      :param endDate   : 结束日期，yyyy-MM-dd HH:mm:ss格式，例如：2050-01-01 01:00:00
@@ -6438,7 +6479,7 @@ def getBondHSDailyMarket(code: str, startDate: str, endDate: str, fields: str, e
 
 def getBondMinuteKLine(code: str, startDate: str, endDate: str, fields: str, export: int, token: str, filter: str,  method: str = "post") -> str:
     """
-    可转债分线数据，数据以分钟为粒度，提供开盘竞价数据。温馨提示：code参数可以从【债券->可转债列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
+    可转债分线数据，数据以分钟为粒度。温馨提示：code参数可以从【债券->可转债列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据。
     :param code      : 股票代码，code参数可以从【债券->可转债列表】接口中批量获取，也可以选择左上角菜单栏【浏览模式】查询数据；支持批量查询，用逗号分隔，每次最多50个；不支持all参数查询。
      :param startDate : 开始日期，yyyy-MM-dd HH:mm:ss格式，例如：2020-01-01 01:00:00
      :param endDate   : 结束日期，yyyy-MM-dd HH:mm:ss格式，例如：2050-01-01 01:00:00

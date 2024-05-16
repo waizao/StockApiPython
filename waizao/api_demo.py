@@ -1,6 +1,7 @@
 import os
 
 from waizao import export_tool
+from waizao.api import spider_api
 from waizao.api import stock_api
 
 """
@@ -10,7 +11,12 @@ from waizao.api import stock_api
 
 if __name__ == '__main__':
     print("StockApiDemo")
-    token: str = "e80da5d374d50461fd52080d43a0f591"  # 歪枣网（www.waizaowang.com）上登录后获取Token
+    token: str = ""  # 歪枣网（www.waizaowang.com）上登录后获取Token
+
+
+    #买卖五档，盘口数据
+    data_list: [] = spider_api.get_pankou("sz000001,sh600000,bj833171")
+    print(data_list)
 
     # 请求日线数据，返回JSON格式
     data: str = stock_api.getDayKLine(
